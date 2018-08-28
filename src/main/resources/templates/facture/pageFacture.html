@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8">
+<title>Bienvenue a la gestion des factures</title>
+</head>
+<body>
+<div class=col-sm-4>
+<h5 class="text-center">Gestion des Factures</h5>
+<hr/>
+<form th:action="@{/traitement-facture}" method="post">
+<div class="form-group">
+<input type="text" name="montant" placeholder="Montant Facture"/>
+</div>
+<div class="form-group">
+<input type="text" name="dateEdition" placeholder="Date d'edition/>
+</div>
+<div class="form-group">
+<input type="submit" class="btn btn-success" value="ENREGISTRER" />
+</div>
+</form>
+<hr/>
+<table class="table">
+<thead>
+<th>Numero Facture</th>
+<th>Montant</th>
+<th>DateEdition</th>
+</thead>
+<tbody>
+<tr th:each="f : ${factures}">
+ <td th:text="${f.id}"></td>
+ <td th:text="${f.prix}"></td>
+ <td th:text="${f.dateEdition}"></td>
+  <td style="font-size:8px;"> Voir detail |Modifier | Supprimer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

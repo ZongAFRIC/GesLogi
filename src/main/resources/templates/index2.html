@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtlm"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8"/>
+<title>Accueil :: Bienvenue</title>
+</head>
+<style>
+           
+#menus text-center a:hover
+{
+	background:#fff000;
+	float:right;
+	right:10%;
+	padding-top:15px;
+	margin-left:-400px;
+	position:relative;
+}
+		tr:first-child{
+			font-weight: bold;
+		
+                        
+		}
+	</style>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+
+<div id="menus">
+<div class=col-sm-3>
+<h5 class="text-center" ><a href="/traitement-chambre" class="button blue">Gestion des CHAMBRES</a></h5>
+</div>
+
+<div class=col-sm-3>
+<h5 class="text-center" ><a href="traitement-reservation" class="button blue">Gestion des RESERVATIONS</a></h5>
+</div>
+
+<div class=col-sm-3>
+<h5 class="text-center" ><a href="traitement-client" class="button blue">Gestion des CLIENTS</a></h5>
+</div>
+
+<div class=col-sm-3>
+<h5 class="text-center"><a href="" class="button blue"> Gestion des FACTURES</a></h5>
+</div>
+</div>
+<div class=col-sm-3>
+<img src="images.jpeg" alt="" style="width:200px;height:320px">
+</div>
+
+<div class=col-sm-6>
+<marquee scrollamount="2" direction='right' width='100%'behavior="alternate"><img src="img.jpg" alt="GESTION DE LOGEMENT" style="width:450px;height:320px"></marquee>
+</div>
+<div class=col-sm-3>
+<img src="images.jpeg" alt="" style="width:200px;height:320px">
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

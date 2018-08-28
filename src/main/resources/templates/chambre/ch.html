@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Traitement de Chambre</title>
+<!-- CSS INCLUDE -->
+	<link rel="stylesheet"
+	    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	    crossorigin="anonymous"></link>
+	<!-- EOF CSS INCLUDE -->
+	<style>
+	.ol-sm {
+	    text-align: center;
+	    background-color:blue;
+	}
+	.disabled {
+	    pointer-events: none;
+	    opacity: 0.5;
+	}
+	.pointer-disabled {
+	    pointer-events: none;
+	}
+	</style>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+
+<div class=col-sm-2 style="border:1px solid #eee;">
+<div class=col-sm->
+<h6 class="text-center" ><a href="/liste-chambre-libre" class="button blue">CHAMBRES LIBRES</a></h6>
+<h6 class="text-center" ><a href="/traitement-reser" class="button blue">CHAMBRES OCCUPEES</a></h6>
+</div>
+</div>
+
+<div class=col-sm-3 style="border:1px solid #eee;">
+<h5 class="text-center">Gestion des Chambres</h5>
+<hr/>
+
+
+
+
+</div>
+
+
+<div class="col-sm-2" style="border:1px solid #eee;background-color:#999;color:#EEE;" >
+<img src="logi.jpeg" alt="LOGI" style="width:140px;height:700px">
+</div>
+
+
+<div class="col-sm-5" >
+<table class="table"  style="border:1px solid #eee;">
+<thead style="background-color:#444;color:#EEE;">
+<th>Nom</th>
+<th>Type</th>
+<th>Prix</th>
+<th>Actions</th>
+</thead>
+<tbody>
+<tr th:each="c : ${chambres}">
+ <td th:text="${c.nom}"></td>
+ <td th:text="${c.type}"></td>
+ <td th:text="${c.prix}"></td>
+ <td style="font-size:8px;"><a th:href="traitement-reser"> Voir detail</a> |<a th:href="@{/traitement-chambre/} + ${c.id}">Modifier</a> |<a th:href="@{/delete-chambre/}+${c.id}">Supprimer</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</body>
+</html>

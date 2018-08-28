@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8" />
+<title> </title>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+<div th:action="@{/create-reser}" method="post">
+<div class="col-sm-6" >
+<div class=col-sm-12 style="border:1px solid #efff;">
+<h5 class="text-center">Info Chambres</h5>
+<table class="table" style="border:1px solid #aee;">
+<thead style="background-color:#green;color:#000;">
+<th>#</th>
+<th>Numéro</th>
+<th>Chambre</th>
+<th>Prix</th>
+<th>Status</th>
+<th>Type</th>
+<th>Date de Reservation</th>
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+<td th:text="${cbs.id}"></td>
+ <td th:text="${cbs.chambre.id}"></td>
+  <td th:text="${cbs.chambre.nom}"></td>
+   <td th:text="${cbs.chambre.prix}"></td>
+    <td th:text="${cbs.chambre.statut}"></td>
+     <td th:text="${cbs.chambre.type}"></td>
+ <td th:text="${#dates.format(cbs.dateDebutReservation, 'dd-MMM-yyyy')}"></td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="col-sm-6" >
+<h5 class="text-center">Info Clients</h5>
+<table class="table" style="border:1px solid #eea;">
+<thead style="background-color:#fff;color:#000;">
+<th>#</th>
+<th>Numéro </th>
+<th>Nom</th>
+<th>Prenom</th>
+<th>Téléphone</th>
+<th>Email</th>
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+<td th:text="${cbs.id}"></td>
+ <td th:text="${cbs.client.id}"></td>
+ <td th:text="${cbs.client.nom}"></td>
+ <td th:text="${cbs.client.prenom}"></td>
+ <td th:text="${cbs.client.telephone}"></td>
+ <td th:text="${cbs.client.email}"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

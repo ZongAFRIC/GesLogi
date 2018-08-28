@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8" />
+<title> Bienvenue :: Gestion des clients</title>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+
+<div class=col-sm-12 style="border:1px solid #eee;">
+<h5 class="text-center">Gestion des Réservations</h5>
+
+<div class="col-sm-2" >
+<h6 class="text-center" ><a href="/listeClients" class="button blue">LISTE CLIENTS</a></h6>
+<h6 class="text-center" ><a href="/traitement-reser" class="button blue">CHAMBRES OCCUPEES</a></h6>
+<h6 class="text-center" ><a href="/chambres-libres" class="button blue">CHAMBRES LIBRES</a></h6>
+</div>
+
+<form  th:action="@{/create-reservation}" method="post">
+
+<div class="col-sm-5" >
+<div class="form-group">
+<input type="text" class ="form-control" name="nom" placeholder="Nom du client"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="prenom" placeholder="Prenom du client"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="telephone" placeholder="Telephone du client"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="email" placeholder="email du client"/>
+</div>
+</div>
+<div class="col-sm-5" >
+<div class="form-group">
+<label class="control-label" for="chambre" > Chambre</label>
+<div th:if="${dispos != null}">
+<select class="form-control" name="chambre" >
+  <option th:each="cb : ${dispos}" th:value="${cb.id}" th:text="${cb.nom}"></option>
+</select>
+</div>
+</div>
+<label class="control-label">Date de debut de reservation</label>
+<div class="form-group">
+<input type="date" class="form-control" name="dateDebutReservation" placeholder="Date de debut de reservation"/>
+</div>
+<label class="control-label">Date de fin de reservation</label>
+<div class="form-group">
+<input type="date" class="form-control" name="dateFinReservation" placeholder="Date de fin de reservation"/>
+</div>
+</div>
+
+<div class="form-group" style="margin-bottom:1px">
+<input type="submit" class="btn btn-success" value="ENREGISTRER"/>
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</body>
+</html>

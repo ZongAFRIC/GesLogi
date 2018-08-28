@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtlm"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8"/>
+<title>Accueil :: Bienvenue</title>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+<div class=col-sm-4>
+<h5 class="text-center">Gestion des Clients</h5>
+<hr/>
+<form th:action="@{/clients/create}" method="post">
+<div class="form-group">
+<input type="text" name="nom" placeholder="Nom du client"/>
+</div>
+<div class="form-group">
+<input type="text" name="prenom" placeholder="Prenom du client"/>
+</div>
+<div class="form-group">
+<input type="text" name="telephone" placeholder="Telephone du client"/>
+</div>
+<div class="form-group">
+<input type="email" name="email" placeholder="email du client"/>
+</div>
+<div class="form-group">
+<input type="submit" class="btn btn-success" value="ENREGISTRER"/>
+</div>
+</form>
+<hr/>
+<table class="table">
+<thead>
+<th>#</th>
+<th>Nom</th>
+<th>Prenom</th>
+<th>Telephone</th>
+<th>Email</th>
+<th>Actions</th>
+</thead>
+<tbody>
+<tr th:each="client : ${clients}">
+ <td th:text="${client.id}"></td>
+ <td th:text="${client.nom}"></td>
+ <td th:text="${client.prenom}"></td>
+ <td th:text="${client.telephone}"></td>
+ <td th:text="${client.email}"></td>
+ <td style="font-size:8px;"> Voir detail |Modifier | Supprimer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=col-sm-4>
+<h5 class="text-center">Gestion des Chambres</h5>
+<hr/>
+<form th:action="@{/chambres/create}" method="post">
+<div class="form-group">
+<input type="text" name="nom" placeholder="Nom de la chambre"/>
+</div>
+<div class="form-group">
+<input type="hidden" name="status" value="libre" />
+</div>
+<div class="form-group">
+<input type="text" name="type" placeholder="Type de la chambre"/>
+</div>
+<div class="form-group">
+<input type="text" name="montant" placeholder="Montant de la chambre"/>
+</div>
+
+<div class="form-group">
+<input type="submit" class="btn btn-success" value="ENREGISTRER" />
+</div>
+</form>
+<hr/>
+<table class="table">
+<thead>
+<th>#</th>
+<th>Nom</th>
+<th>Type</th>
+<th>Prix</th>
+<th>Statut</th>
+<th>Actions</th>
+</thead>
+<tbody>
+<tr th:each="c : ${chambres}">
+ <td th:text="${c.id}"></td>
+ <td th:text="${c.nom}"></td>
+ <td th:text="${c.type}"></td>
+ <td th:text="${c.prix}"></td>
+ <td th:text="${c.statut}"></td>
+ <td style="font-size:8px;"> Voir detail |Modifier | Supprimer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class=col-sm-4>
+<h5 class="text-center">Gestion des Reservations</h5>
+<hr/>
+<form th:action="@{/reservations/create}" method="post">
+<div class="form-group">
+<label class="control-label" for="client"> Client</label>
+<div th:if="${clients != null}">
+<select class="form-control" name="client">
+  <option th:each="clt : ${clients}" th:value="${clt.id}" th:text="${clt.nom} + ${clt.prenom}"></option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label class="control-label" for="chambre"> Chambre</label>
+<div th:if="${dispos != null}">
+<select class="form-control" name="chambre">
+
+  <option th:each="cb : ${dispos}" th:value="${cb.id}" th:text="${cb.nom}"></option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<input type="text" name="duree" placeholder="Duree de la reservation"/>
+</div>
+
+<div class="form-group">
+
+<input type="submit" class="btn btn-success" value="ENREGISTRER" />
+ 
+</div>
+</form>
+<hr/>
+<table class="table">
+<thead>
+<th>#</th>
+<th>Date</th>
+<th>Client</th>
+<th>Duree</th>
+<th>Type</th>
+<th>Actions</th>
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+
+ <td th:text="${cbs.id}"></td>
+ <td th:text="${cbs.dateDebut}"></td>
+ <td th:text="${cbs.client.nom}"></td>
+ <td th:text="${cbs.duree}"></td>
+ <td th:text="${cbs.chambre.type}"></td>
+ <td style="font-size:8px;"> Voir detail | Modifier | Supprimer </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</body>
+</html>

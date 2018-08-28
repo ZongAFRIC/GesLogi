@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8" />
+<title> Bienvenue :: Gestion des clients</title>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+
+<div class=col-sm-2 style="border:1px solid #eee;">
+<div class=col-sm->
+<h6 class="text-center" ><a href="/listeClients" class="button blue">LISTE CLIENTS</a></h6>
+<h6 class="text-center" ><a href="/chambres-libres" class="button blue">CHAMBRES LIBRES</a></h6>
+<h6 class="text-center" ><a href="/traitement-reser" class="button blue">CHAMBRES OCCUPEES</a></h6>
+</div>
+</div>
+<div class=col-sm-4 style="border:1px solid #eee;">
+<h5 class="text-center">Gestion des Clients</h5>
+<hr/>
+<form th:if="${client}" th:action="@{/update-client/}" method="post">
+<div class="form-group">
+<input type="hidden" class ="form-control" name="id" th:field="*{client.id}" th:value="${client.id}"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="nom" th:field="*{client.nom}" th:value="${client.nom}"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="prenom" th:field="*{client.prenom}" th:value="${client.prenom}"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="telephone" th:field="*{client.telephone}" th:value="${client.telephone}"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="email" th:field="*{client.email}" th:value="${client.email}"/>
+</div>
+<div class="form-group">
+<input type="submit" class="btn btn-warning" value="MODIFIER"/>
+</div>
+</form>
+
+
+
+<form th:unless="${client}" th:action="@{/create-client}" method="post">
+<div class="form-group">
+<input type="text" class ="form-control" name="nom" placeholder="Nom du client"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="prenom" placeholder="Prenom du client"/>
+</div>
+<div class="form-group">
+<input type="text" class ="form-control" name="telephone" placeholder="Telephone du client"/>
+</div>
+<div class="form-group">
+<input type="email" class ="form-control" name="email" placeholder="email du client"/>
+</div>
+<div class=col-sm-2 style="border:1px solid #eee;">
+<div class="form-group">
+<input type="submit" class="btn btn-success" value="ENREGISTRER"/>
+</div>
+</form>
+</div>
+
+
+<div class="col-sm-8" >
+<table class="table" style="border:1px solid #eee;">
+<thead style="background-color:#444;color:#EEE;">
+<th>Nom</th>
+<th>Prenom</th>
+<th>Telephone</th>
+<th>Email</th>
+</thead>
+</table>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

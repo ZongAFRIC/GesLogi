@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/master :: page">
+<head>
+<meta charset="UTF-8">
+<title>Bienvenue a la gestion des Reservatons</title>
+</head>
+<body>
+<div th:fragment="content">
+<div class="row" style="padding-bottom:50px;">
+
+<div th:action="@{/create-reservation}" method="post">
+<div class="col-sm-12" >
+<table class="table" style="border:1px solid #eee;">
+<thead style="background-color:#444;color:#EEE;">
+<th>Details de la chambre <tbody>
+
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+ <td th:text="${cbs.id}"></td> <td th:text="${cbs.chambre.nom}"></td> <td th:text="${cbs.dateDebutReservation}"></td></th>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="col-sm-6" >
+<table class="table" style="border:1px solid #eee;">
+<thead style="background-color:#444;color:#EEE;">
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+ <tr>Numero de la chambe:<td th:text="${cbs.chambre.id}"></td></tr>
+ <tr>Nom chambre: <td th:text="${cbs.chambre.nom}"></td></tr>
+ <tr>Prix de la chambre:<td th:text="${cbs.chambre.prix}"></td></tr>
+ <tr>Type chambre: <td th:text="${cbs.chambre.type}"></td></tr>
+ <tr>Statut chambre: <td th:text="${cbs.chambre.statut}"></td></tr>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
+<div class="col-sm-6" >
+<table class="table" style="border:1px solid #eee;">
+<thead style="background-color:#444;color:#EEE;">
+</thead>
+<tbody>
+<tr th:each="cbs : ${reservations}">
+ <td> <tr>Numero client: <td th:text="${cbs.client.id}"></td></tr>
+<tr>Nom client:<td th:text="${cbs.client.nom}"></td></tr>
+<tr>Prénom client:<td th:text="${cbs.client.nom}"></td></tr>
+<tr>Téléphone<td th:text="${cbs.client.nom}"></td></tr>
+<tr>Email</tr></td>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>>
