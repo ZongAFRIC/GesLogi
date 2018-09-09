@@ -28,7 +28,7 @@ public class Chambre {
 	
 	public Chambre() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Chambre(String nom, double prix, String statut, String type) {
@@ -87,7 +87,7 @@ public class Chambre {
 	public void setReservations(Collection<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
+	//
 	
 	
 	
