@@ -33,7 +33,6 @@ public class ClientController {
 	@RequestMapping("/traitement-client/{id}")
 	public String teChambre(Model model, @PathVariable(value = "id") Long id) {
 		model.addAttribute("client", cRepository.getOne(id) );
-		//model.addAttribute("client", cRepository.findAll());
 		return "client/pageClient";
 	}
 	
