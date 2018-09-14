@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/*class entities*/
 @Entity
 public class Facture {
 	@Id
@@ -17,10 +18,10 @@ public class Facture {
 	private double montant;
 	private Date dateEdition;
 	@ManyToOne
-    @JoinColumn(name = "id_client")
+   	@JoinColumn(name = "id_client")
 	private Client client;
 	@ManyToOne
-    @JoinColumn(name = "id_chambre")
+    	@JoinColumn(name = "id_chambre")
 	private Chambre chambre;
 	
 
